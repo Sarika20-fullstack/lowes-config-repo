@@ -20,9 +20,6 @@ spring:
     restart:
       enabled: true
 
-config:
-  import: optional:configserver:http://localhost:8889
-
 logging:
   level:
     com.capstone.scloud: DEBUG
