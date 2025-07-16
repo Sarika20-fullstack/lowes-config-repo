@@ -2,8 +2,7 @@ spring:
   application:
     name: supplier-service
 
-  profiles:
-    active: dev
+  
 
   datasource:
     url: jdbc:postgresql://localhost:5432/capstone
