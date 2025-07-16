@@ -4,28 +4,29 @@ spring:
   cloud:
     gateway:
       routes:
-        #        http://localhost:8111/matchx/api/products
         - id: supplier-route
           uri: lb://supplier-service
           predicates:
             - Path=/matchx/api/suppliers/**
           filters:
             - StripPrefix=2
-# Eureka Client
+            - name: CircuitBreaker
+              args:
+                name: supplierCircuitBreaker
+                fallbackUri: forward:/fallback/suppliers
+
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
     register-with-eureka: true
     fetch-registry: true
 
-# Logging
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.web: DEBUG
 
-# Actuator Endpoints
 management:
   endpoints:
     web:
