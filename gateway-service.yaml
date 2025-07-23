@@ -47,7 +47,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: orderMatchingCircuitBreaker
-                fallbackUri: forward:/fallback/order-matching
+                fallbackUri: forward:/fallback/orderMatching
 
 resilience4j:
   circuitbreaker:
