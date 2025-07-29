@@ -12,7 +12,7 @@ spring:
 
   security:
     jwt:
-      secret-key: YourVerySecretKey
+      secret-key: ${JWT_SECRET_KEY}
       token-duration: 1D
 
 server:
