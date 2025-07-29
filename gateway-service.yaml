@@ -33,6 +33,13 @@ spring:
                 name: productCircuitBreaker
                 fallbackUri: forward:/fallback/products
 
+        - id: auth-route
+          uri: lb://auth-service
+          predicates:
+            - Path=/matchx/api/auth/**
+          filters:
+            - StripPrefix=2
+
         - id: order-route
           uri: lb://order-service
           predicates:
