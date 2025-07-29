@@ -4,6 +4,8 @@ spring:
 
   cloud:
     gateway:
+      default-filters:
+        - name: AuthenticationFilter
       routes:
         - id: supplier-route
           uri: lb://supplier-service
@@ -90,6 +92,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     register-with-eureka: true
     fetch-registry: true
+
+jwt:
+  secret: your-secret-key-here # Replace with your actual secret
 
 logging:
   level:
