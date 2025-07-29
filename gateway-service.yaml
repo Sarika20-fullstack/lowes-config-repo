@@ -36,7 +36,7 @@ spring:
         - id: auth-route
           uri: lb://auth-service
           predicates:
-            - Path=/matchx/api/auth/**,/matchx/api/users/**
+            - Path=/matchx/api/auth/**, /matchx/api/users/**
           filters:
             - StripPrefix=2
 
@@ -62,7 +62,6 @@ spring:
                 name: orderMatchingCircuitBreaker
                 fallbackUri: forward:/fallback/orderMatching
 
-# ✅ Swagger UI aggregation through Gateway
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
@@ -118,8 +117,10 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
-jwt:
-  secret-key: dhRnSCE3s-KPn5fs_qIDGHO0WUBvKATKbQHD7hRErsA
+security:
+  jwt:
+    secret-key: dhRnSCE3s-KPn5fs_qIDGHO0WUBvKATKbQHD7hRErsA
+    token-duration: 30m
 
 logging:
   level:
