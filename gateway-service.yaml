@@ -14,7 +14,7 @@ spring:
         - id: supplier-route
           uri: lb://supplier-service
           predicates:
-            - Path=/matchx/api/suppliers/**
+            - Path=/matchx/api/suppliers/**, /matchx/api/suppliers/v3/api-docs
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -25,7 +25,7 @@ spring:
         - id: product-route
           uri: lb://product-service
           predicates:
-            - Path=/matchx/api/products/**
+            - Path=/matchx/api/products/**, /matchx/api/products/v3/api-docs
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -36,7 +36,7 @@ spring:
         - id: order-route
           uri: lb://order-service
           predicates:
-            - Path=/matchx/api/orders/**
+            - Path=/matchx/api/orders/**, /matchx/api/orders/v3/api-docs
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -47,7 +47,7 @@ spring:
         - id: order-matching-route
           uri: lb://order-matching-service
           predicates:
-            - Path=/matchx/api/order-matching/**
+            - Path=/matchx/api/order-matching/**, /matchx/api/order-matching/v3/api-docs
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -55,7 +55,7 @@ spring:
                 name: orderMatchingCircuitBreaker
                 fallbackUri: forward:/fallback/orderMatching
 
-# ✅ Swagger Aggregation
+# ✅ Swagger UI aggregation through Gateway
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
