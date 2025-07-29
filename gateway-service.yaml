@@ -94,7 +94,7 @@ eureka:
     fetch-registry: true
 
 jwt:
-  secret: your-secret-key-here # Replace with your actual secret
+  secret-key: ${JWT_SECRET_KEY}
 
 logging:
   level:
