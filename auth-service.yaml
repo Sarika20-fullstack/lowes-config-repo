@@ -4,7 +4,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://admin:secret@localhost:27017/authdb?authSource=admin
+      uri: mongodb://admin:secret@localhost:27017/authDB?authSource=admin
 
   jackson:
     serialization:
