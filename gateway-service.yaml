@@ -119,7 +119,7 @@ eureka:
     fetch-registry: true
 
 jwt:
-  secret-key: ${JWT_SECRET_KEY}
+  secret-key: dhRnSCE3s-KPn5fs_qIDGHO0WUBvKATKbQHD7hRErsA
 
 logging:
   level:
