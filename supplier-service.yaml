@@ -5,7 +5,7 @@ spring:
   
 
   datasource:
-    url: jdbc:postgresql://postgres-db:5432/capstone
+    url: jdbc:postgresql://postgres-supplier:5432/capstone
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
