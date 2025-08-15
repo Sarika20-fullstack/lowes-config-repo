@@ -25,7 +25,7 @@ spring:
         - id: product-route
           uri: lb://product-service
           predicates:
-            - Path=/matchx/api/products/**, /matchx/api/products/v3/api-docs
+            - Path=/matchx/api/products/**, /matchx/supplier/swagger-ui/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
