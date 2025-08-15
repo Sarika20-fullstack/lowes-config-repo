@@ -4,7 +4,8 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://admin:secret@mongo-db:27017/authDB?authSource=admin
+      # Injected from K8s Secret via env var
+      uri: ${MONGO_URI}
 
   jackson:
     serialization:
@@ -12,7 +13,8 @@ spring:
 
   security:
     jwt:
-      secret-key: dhRnSCE3s-KPn5fs_qIDGHO0WUBvKATKbQHD7hRErsA
+      # Injected from K8s Secret via env var
+      secret-key: ${JWT_SECRET_KEY}
       token-duration: 1D
 
 server:
