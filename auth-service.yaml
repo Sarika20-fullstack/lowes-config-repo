@@ -18,7 +18,7 @@ spring:
       token-duration: 1D
 
 server:
-  port: 7050
+  port: 7075
 
 eureka:
   client:
