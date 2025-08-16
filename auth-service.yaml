@@ -5,7 +5,7 @@ spring:
   data:
     mongodb:
       # Injected from K8s Secret via env var
-      uri: ${MONGO_URI}
+      uri: mongodb://admin:secret@mongo-db:27017/authDB?authSource=admin
 
   jackson:
     serialization:
@@ -14,7 +14,7 @@ spring:
   security:
     jwt:
       # Injected from K8s Secret via env var
-      secret-key: ${JWT_SECRET_KEY}
+      secret-key: 4748930e83a74df3ec63ab8cefc28684dc1ae4a74ecfe3f2343cee5543af2168
       token-duration: 1D
 
 server:
@@ -22,11 +22,10 @@ server:
 
 eureka:
   client:
-    service-url:
-      default-zone: http://registry-service:8761/eureka
     register-with-eureka: true
     fetch-registry: true
-
+    service-url:
+      defaultZone: http://registry-service:8761/eureka/
   instance:
     prefer-ip-address: true
 
@@ -34,6 +33,4 @@ management:
   endpoints:
     web:
       exposure:
-        include:
-          - health
-          - info
+        include: health,info
