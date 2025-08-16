@@ -119,7 +119,7 @@ eureka:
 
 security:
   jwt:
-    secret-key: dhRnSCE3s-KPn5fs_qIDGHO0WUBvKATKbQHD7hRErsA
+    secret-key: 4748930e83a74df3ec63ab8cefc28684dc1ae4a74ecfe3f2343cee5543af2168
     token-duration: 30m
 
 logging:
