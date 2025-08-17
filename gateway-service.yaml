@@ -14,7 +14,7 @@ spring:
         - id: supplier-route
           uri: lb://supplier-service
           predicates:
-            - Path=/matchx/api/suppliers/**, /matchx/api/suppliers/v3/api-docs
+            - Path=/matchx/api/suppliers/**,/matchx/api/suppliers/v3/api-docs
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -25,7 +25,7 @@ spring:
         - id: product-route
           uri: lb://product-service
           predicates:
-            - Path=/matchx/api/products/**, /matchx/supplier/swagger-ui/**
+            - Path=/matchx/api/products/**,/matchx/supplier/swagger-ui/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -36,14 +36,14 @@ spring:
         - id: auth-route
           uri: lb://auth-service
           predicates:
-            - Path=/matchx/api/auth/**, /matchx/api/users/**
+            - Path=/matchx/api/auth/**,/matchx/api/users/**
           filters:
             - StripPrefix=2
 
         - id: order-route
           uri: lb://order-service
           predicates:
-            - Path=/matchx/api/orders/**, /matchx/api/orders/v3/api-docs
+            - Path=/matchx/api/orders/**,/matchx/api/orders/v3/api-docs
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -54,7 +54,7 @@ spring:
         - id: order-matching-route
           uri: lb://order-matching-service
           predicates:
-            - Path=/matchx/api/order-matching/**, /matchx/api/order-matching/v3/api-docs
+            - Path=/matchx/api/order-matching/**,/matchx/api/order-matching/v3/api-docs
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -119,8 +119,9 @@ eureka:
 
 security:
   jwt:
-    secret-key: 4748930e83a74df3ec63ab8cefc28684dc1ae4a74ecfe3f2343cee5543af2168
-    token-duration: 30m
+    # Prefer injecting via env var: JWT_SECRET
+    secret-key: ${JWT_SECRET:4748930e83a74df3ec63ab8cefc28684dc1ae4a74ecfe3f2343cee5543af2168}
+    token-duration: 1D
 
 logging:
   level:
